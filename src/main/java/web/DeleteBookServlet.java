@@ -1,4 +1,6 @@
-import service.BookExcerptService;
+package web;
+
+import service.BookService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -7,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class DeleteBookExcerptServlet extends HttpServlet {
+public class DeleteBookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        BookExcerptService.delete(id);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/bookExcerpts.jsp");
+        BookService.delete(id);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/books.jsp");
         requestDispatcher.forward(request,response);
     }
 

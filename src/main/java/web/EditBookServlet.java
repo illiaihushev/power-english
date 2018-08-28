@@ -1,3 +1,5 @@
+package web;
+
 import model.Book;
 import service.BookService;
 
@@ -10,10 +12,13 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.Calendar;
 
-public class NewBookServlet extends HttpServlet {
+public class EditBookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int userId = (int) request.getSession().getAttribute("userId");
+        String pathInfo = request.getPathInfo();
+        int id = Integer.parseInt(pathInfo.substring(1));
+
+
         String name = request.getParameter("bookName");
         String author = request.getParameter("author");
         int year = Integer.parseInt(request.getParameter("date"));
@@ -23,13 +28,25 @@ public class NewBookServlet extends HttpServlet {
 
         Date date = new Date(calendar.getTimeInMillis());
 
-        BookService.insert(new Book(userId, name, author, date));
+        BookService.update(id, name, author, date);
         response.sendRedirect(request.getContextPath() + "/books/");
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/newBook.jsp");
-        requestDispatcher.forward(request, response);
+        String pathInfo = request.getPathInfo();
+        int id = Integer.parseInt(pathInfo.substring(1));
+        Book book = BookService.get(id);
+        int userId = book.getUserId();
+        if (userId == (int) request.getSession().getAttribute("userId")) {
+            request.setAttribute("bookName", book.getBookName());
+            request.setAttribute("author", book.getAuthor());
+            request.setAttribute("date", book.getReleaseDate().toLocalDate().getYear());
+
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/editBookInfo.jsp");
+            requestDispatcher.forward(request,response);
+        } else {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
     }
 }

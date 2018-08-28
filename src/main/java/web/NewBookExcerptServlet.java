@@ -1,3 +1,5 @@
+package web;
+
 import model.Book;
 import model.BookExcerpt;
 import service.BookExcerptService;
@@ -29,7 +31,7 @@ public class NewBookExcerptServlet extends HttpServlet {
         if(book.getUserId() == (int) request.getSession().getAttribute("userId")) {
             request.setAttribute("bookName", book.getBookName());
             request.setAttribute("bookId", bookId);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/newBookExcerpt.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/newBookExcerpt.jsp");
             requestDispatcher.forward(request, response);
         }else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);

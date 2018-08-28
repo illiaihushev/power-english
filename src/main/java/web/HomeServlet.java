@@ -1,3 +1,5 @@
+package web;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +24,7 @@ public class HomeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/homePage.jsp");
         requestDispatcher.forward(request, response);
     }
 }

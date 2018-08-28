@@ -1,3 +1,5 @@
+package web;
+
 import model.BookExcerpt;
 import service.BookExcerptService;
 import service.BookService;
@@ -51,7 +53,7 @@ public class EditBookExcerptServlet extends HttpServlet {
             } else {
                 request.setAttribute("chapter", "");
             }
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/editPageNumber.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/editPageNumber.jsp");
             requestDispatcher.forward(request,response);
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);

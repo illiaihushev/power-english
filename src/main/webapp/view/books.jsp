@@ -11,7 +11,7 @@
     <ul>
         <li><a href="${root}/home/">Home</a></li>
         <li><a href="${root}/books/">Books</a></li>
-        <li><a href="${root}/films.jsp">Films</a></li>
+        <li><a href="${root}/view/films.jsps.jsp">Films</a></li>
     </ul>
 </div>
 <div class="mainPart" id="main">

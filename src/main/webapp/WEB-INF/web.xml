@@ -4,7 +4,7 @@
 
     <filter>
         <filter-name>Session Validation</filter-name>
-        <filter-class>SessionValidationFilter</filter-class>
+        <filter-class>web.SessionValidationFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>Session Validation</filter-name>
@@ -14,7 +14,7 @@
 
     <filter>
         <filter-name>UTF8 Filter</filter-name>
-        <filter-class>SetUTF8EncodingFilter</filter-class>
+        <filter-class>web.SetUTF8EncodingFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>UTF8 Filter</filter-name>
@@ -23,7 +23,7 @@
 
     <servlet>
         <servlet-name>Books Servlet</servlet-name>
-        <servlet-class>BooksServlet</servlet-class>
+        <servlet-class>web.BooksServlet</servlet-class>
 
     </servlet>
 
@@ -34,7 +34,7 @@
 
     <servlet>
         <servlet-name>Log In Servlet</servlet-name>
-        <servlet-class>LogInServlet</servlet-class>
+        <servlet-class>web.LogInServlet</servlet-class>
 
     </servlet>
 
@@ -46,7 +46,7 @@
 
     <servlet>
         <servlet-name>Register Servlet</servlet-name>
-        <servlet-class>RegisterServlet</servlet-class>
+        <servlet-class>web.RegisterServlet</servlet-class>
 
     </servlet>
 
@@ -58,7 +58,7 @@
 
     <servlet>
         <servlet-name>Home Servlet</servlet-name>
-        <servlet-class>HomeServlet</servlet-class>
+        <servlet-class>web.HomeServlet</servlet-class>
 
     </servlet>
 
@@ -70,7 +70,7 @@
 
     <servlet>
         <servlet-name>Book Excerpt Edit Number Page Servlet</servlet-name>
-        <servlet-class>EditBookExcerptServlet</servlet-class>
+        <servlet-class>web.EditBookExcerptServlet</servlet-class>
 
     </servlet>
 
@@ -81,7 +81,7 @@
 
     <servlet>
         <servlet-name>New Book Excerpt Servlet</servlet-name>
-        <servlet-class>NewBookExcerptServlet</servlet-class>
+        <servlet-class>web.NewBookExcerptServlet</servlet-class>
 
     </servlet>
 
@@ -92,7 +92,7 @@
 
     <servlet>
         <servlet-name>Delete Book Excerpt Servlet</servlet-name>
-        <servlet-class>DeleteBookExcerptServlet</servlet-class>
+        <servlet-class>web.DeleteBookExcerptServlet</servlet-class>
 
     </servlet>
 
@@ -104,7 +104,7 @@
 
     <servlet>
         <servlet-name>New Book Servlet</servlet-name>
-        <servlet-class>NewBookServlet</servlet-class>
+        <servlet-class>web.NewBookServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -114,7 +114,7 @@
 
     <servlet>
         <servlet-name>Delete Book Servlet</servlet-name>
-        <servlet-class>DeleteBookServlet</servlet-class>
+        <servlet-class>web.DeleteBookServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -124,7 +124,7 @@
 
     <servlet>
         <servlet-name>Edit Book Servlet</servlet-name>
-        <servlet-class>EditBookServlet</servlet-class>
+        <servlet-class>web.EditBookServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -134,7 +134,7 @@
 
     <servlet>
         <servlet-name>Session Terminated Servlet</servlet-name>
-        <servlet-class>SessionTerminatedServlet</servlet-class>
+        <servlet-class>web.SessionTerminatedServlet</servlet-class>
 
     </servlet>
 
@@ -143,14 +143,14 @@
         <url-pattern>/sessionExpired/*</url-pattern>
     </servlet-mapping>
 
-    <!--<error-page>-->
-        <!--<error-code>404</error-code>-->
-        <!--<location>/pageNotFound.html</location>-->
-    <!--</error-page>-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/view/pageNotFound.html</location>
+    </error-page>
 
-    <!--<error-page>-->
-        <!--<error-code>500</error-code>-->
-        <!--<location>/internalServerError.html</location>-->
-    <!--</error-page>-->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/view/internalServerError.html</location>
+    </error-page>
 
 </web-app>

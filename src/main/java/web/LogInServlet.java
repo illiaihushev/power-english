@@ -1,4 +1,5 @@
-import dao.UsersDAO;
+package web;
+
 import model.User;
 import service.UserService;
 
@@ -36,14 +37,14 @@ public class LogInServlet extends HttpServlet {
             request.getSession().setAttribute("userId", user.getUserId());
             response.sendRedirect(request.getContextPath() + "/home/");
         } else {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/failedLogInPage.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/failedLogInPage.jsp");
             requestDispatcher.forward(request, response);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/logInPage.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/logInPage.jsp");
         requestDispatcher.forward(request, response);
     }
 }

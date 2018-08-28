@@ -1,6 +1,6 @@
-import model.Book;
+package web;
+
 import model.User;
-import service.BookService;
 import service.UserService;
 
 import javax.servlet.RequestDispatcher;
@@ -23,14 +23,14 @@ public class RegisterServlet extends HttpServlet {
         if (!UserService.isLoginAlreadyInUse(login)) {
             UserService.insert(new User(login, password, date));
         } else {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/failedRegisterPage.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/failedRegisterPage.jsp");
             requestDispatcher.forward(request, response);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/registerPage.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/registerPage.jsp");
         requestDispatcher.forward(request, response);
     }
 }

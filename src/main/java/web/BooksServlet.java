@@ -1,21 +1,17 @@
-import dao.BookExcerptsDAO;
+package web;
+
 import model.Book;
 import model.User;
 import service.BookExcerptService;
 import service.BookService;
 import service.UserService;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 import java.io.IOException;
-import java.util.Locale;
 
 public class BooksServlet extends HttpServlet {
     @Override
@@ -28,7 +24,7 @@ public class BooksServlet extends HttpServlet {
                 request.setAttribute("bookName", book.getBookName());
                 request.setAttribute("bookId", book.getBookId());
                 request.setAttribute("excerpts", BookExcerptService.getBookExcerptsByBookId(bookId));
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/bookExcerpts.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/bookExcerpts.jsp");
                 requestDispatcher.forward(request, response);
             } else {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -37,7 +33,7 @@ public class BooksServlet extends HttpServlet {
             User user = UserService.getWithBooks((Integer) request.getSession().getAttribute("userId"));
             request.setAttribute("books", user.getBooks());
             request.setAttribute("login", user.getLogin());
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/books.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/books.jsp");
             requestDispatcher.forward(request, response);
         }
     }
